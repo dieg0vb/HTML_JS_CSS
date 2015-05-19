@@ -1,0 +1,57 @@
+h1 {
+    margin-bottom: 1em;
+}
+
+.pantalla {
+	display: none;
+    margin-bottom: 2em;
+}
+
+.pantalla.activa {
+	display: block;
+}
+
+#error {
+	display: none;
+}
+
+
+
+#spinner {
+	position: absolute;
+	text-align: center;
+    left : 0;
+	width : 100%;
+	display:none;
+    top: 80px;
+    z-index: 10;
+}
+
+#spinner img {
+    width : 220px;
+    height: 220px;
+}
+
+
+footer {
+    text-align: right;
+    color : silver;
+}
+
+thumbnail img {
+    position: relative;
+    height: 100px;
+}
+
+form.form-comprar .form-group {
+    margin : 4px;
+}
+
+form.form-comprar input[type=text] {
+    text-align : right;
+}
+
+form.form-comprar .input-group-addon {
+    width : 50px !important;
+}
+

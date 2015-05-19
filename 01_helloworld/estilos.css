@@ -1,0 +1,12 @@
+section.pantalla {
+    margin-top : 1em;
+    padding: 1em;
+    border : 1px solid silver;
+    display: none;
+}
+
+section.pantalla.activa {
+    background-color : bisque;
+    border : 1px solid black;
+    display: block;
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" 
+          href="bootswatch-lumen-bootstrap.css">
+    <style>
+        .pantalla {
+            display: none;
+        }
+        
+        .pantalla.activa {
+            display: block;
+        }
+
+        footer {
+            position: absolute;
+            bottom : 2em;
+            color : silver;
+        }
+        
+        .cartel {
+            width : 200px;
+            border : 1px solid silver;
+            padding: 4px;
+            margin : 4px;
+            text-align: center;
+        }
+        
+        .cartel img {
+            width : 100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <!--
+    div.container>(div.jumbotron>(h1{Hello, sweetie}+p{I hate you.}))
+    -->
+    <div class="container">
+       <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion">
+        <span class="sr-only">Desplegar menú</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Mingo</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navegacion">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Inicio <span class="sr-only">(activa)</span></a></li>
+        <li><a href="#">Catálogo</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Buscar">
+        </div>
+        <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span>
+            <span class="sr-only">Buscar</span>
+        </button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+       
+       
+        <section id="presentacion" class="pantalla activa">
+           <header class="jumbotron">
+                <h1>Hello, sweeter</h1>
+                <p>
+                    I hate you.
+                    <button class="btn btn-large btn-primary">Comprar</button>
+                </p>
+           </header>
+           <main class="row">
+               <div class="col-md-4">
+                   <h2>Nosotros</h2>
+                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, non magnam sequi, eligendi doloremque ipsa blanditiis quo.</p>
+               </div>
+               <div class="col-md-4">
+                   <h2>Nuestros productos</h2>
+                   <p>Fuga necessitatibus mollitia voluptate repudiandae dolorem eveniet quaerat aperiam, aspernatur.</p>
+               </div>
+               <div class="col-md-4">
+                   <h2>Ventajas</h2>
+                   <p>Consectetur adipisicing elit. Aliquid, dolores.  praesentium quibusdam nesciunt! Labore laboriosam, nesciunt deserunt doloribus nulla natus rem tempore.</p>
+               </div>
+           </main>
+            
+        </section>
+        
+        <section id="productos" class="pantalla">
+            <h1>Catálogo</h1>
+            <!--
+            ul>li{Producto nº $}*6
+            -->
+            <ul>
+                <li>Camiseta modelo 1 <img src="..." alt="camiseta modelo 1"></li>
+                <li>Producto nº 2</li>
+                <li>Producto nº 3</li>
+                <li>Producto nº 4</li>
+                <li>Producto nº 5</li>
+                <li>Producto nº 6</li>
+            </ul>
+                        
+        </section>
+        
+        <footer>Mingo, hecho con <span class="glyphicon glyphicon-heart"></span> por cntg team</footer>
+        
+    </div>
+    
+    
+    
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="dominio.js"></script>
+    <script>    
+        
+        var modelo = {
+            recuperarCatalogoHoy : function() {
+                console.log('Iniciando conexión a servidor.');
+                
+                var url = 'https://demo8983883.mockable.io/productos/camisetas/hoy';
+                
+                var callback = function(datos) {
+                    console.table(datos);
+                };
+                
+                var promesa = $.get(url);
+                promesa.done(callback);
+                
+                var promesaTransformada = promesa.then(function(datos) {
+                    var camisetas = [];
+                    for (var i=0; i < datos.length; i++) {
+                        var datosActual = datos[i];
+                        var nuevaCamiseta = new Camiseta(
+                            datosActual.modelo, datosActual.precio,
+                            datosActual.colores, datosActual.imagen);
+                        camisetas.push(nuevaCamiseta);
+                    }
+                    
+                    return camisetas;
+                });
+                
+                console.log('Petición realizada.');
+                return promesaTransformada;
+            }
+        };
+        
+        var controlador = {
+            
+            navegar : function() {
+                var arrayPantallaActiva = $('.activa');
+                arrayPantallaActiva.fadeOut(100, function() {
+                    arrayPantallaActiva.removeClass('activa');
+
+                    var arrayPantallaDestino = $('#productos');
+                    arrayPantallaDestino.fadeIn(100);
+                    arrayPantallaDestino.addClass('activa');                
+                });
+            },
+            
+            mostrarCamisetas : function() {
+                var camisetas = this.camisetas;
+                var $lista = $('#productos ul');
+                $lista.empty();
+                for (var i=0; i < camisetas.length; i++) {
+                    var camisetaActual = camisetas[i];
+                    var $nuevoItem = $('<li>');
+                    $('<article>')
+                        .addClass('cartel')
+                        .append(
+                            $('<img>')
+                                .attr('src', camisetaActual.imagen))
+                        .append(
+                            $('<div>')
+                                .text('Modelo: ' + camisetaActual.modelo))
+                        .append(
+                            $('<div>')
+                                .text('Precio: ' + camisetaActual.precio))
+                        .append(
+                            $('<div>')
+                                .text('S: ' + camisetaActual.tallaS + ' ' +
+                                      'M: ' + camisetaActual.tallaM))
+                        .append(
+                            $('<div>')
+                                .text('Subtotal: ' + camisetaActual.total()))
+                        .appendTo($nuevoItem);
+                    $lista.append($nuevoItem);    
+                }
+            },
+
+            mostrarError : function(texto) {
+                var $pantallaActiva = $('.activa');
+                var $parrafo = $('<p>').text(texto);
+                $pantallaActiva.append($parrafo);
+            },
+            
+            mostrarCatalogo : function() {
+                var self = this;
+                var callbackExito = function(datos) {
+                    self.camisetas = datos;
+                    self.mostrarCamisetas();
+                    self.navegar();
+                };
+                var callbackError = function(jqXHR, textStatus, errorThrown) {
+                    self.mostrarError('No se ha podido recuperar la información.');
+                };
+                
+                var promesa = modelo.recuperarCatalogoHoy();
+                promesa.done(callbackExito);
+                promesa.fail(callbackError);
+            },
+            
+            inicializarPantallas : function() {
+                var self = this;
+                console.log('InicializarPantalla this:', this);
+                var gestorEventoClickBoton = function(evt) {
+                    console.log('Evento: ', evt);
+                    console.log('gestorEventoClick this: ', this);   
+                    console.log('WTF: ', self);
+                    self.mostrarCatalogo();
+                };
+
+                var arrayBotonesSeccionLanding = $('button');
+
+                arrayBotonesSeccionLanding.on('click', gestorEventoClickBoton);
+                // arrayBotonesSeccionLanding.click(gestorEventoClickBoton);
+            }
+        };
+
+        controlador.inicializarPantallas();
+        
+    </script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

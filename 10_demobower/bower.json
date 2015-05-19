@@ -1,0 +1,25 @@
+{
+  "name": "DemoBower",
+  "version": "0.0.1",
+  "authors": [
+    "ciberado <email@javier-moreno.com>"
+  ],
+  "description": "Es una demostración de bower.",
+  "keywords": [
+    "demo",
+    "tutorial",
+    "bower"
+  ],
+  "license": "Apache 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.4"
+  }
+}

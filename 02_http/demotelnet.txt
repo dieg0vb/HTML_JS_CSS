@@ -1,0 +1,7 @@
+> telnet
+
+set localecho
+
+open 52.6.84.201 80
+
+GET http://52.6.84.201/index.jsp HTTP/1.1

@@ -1,0 +1,27 @@
+[ 
+    {
+    "modelo" : "Fire is Fierce",
+    "precio" : 10,
+    "imagen" : "http://adventurelandstore.com/adventureland/images/t-shirt-doctor-who-vote-no-daleks-shr.jpg",
+    "colores" : ["Rojo", "Azul", "Negro"]
+    },
+    {
+    "modelo" : "Big Gallyfry",
+    "precio" : 10,
+    "imagen" : "http://adventurelandstore.com/adventureland/images/t-shirt-doctor-who-vote-no-daleks-shr.jpg",
+    "colores" : ["Blanco"]
+    },
+    {
+    "modelo" : "Bad wolf",
+    "precio" : 12,
+    "imagen" : "http://adventurelandstore.com/adventureland/images/t-shirt-doctor-who-vote-no-daleks-shr.jpg",
+    "colores" : ["Negro", "Azul"]
+    },
+    {
+    "modelo" : "Angels",
+    "precio" : 12,
+    "imagen" : "http://adventurelandstore.com/adventureland/images/t-shirt-doctor-who-vote-no-daleks-shr.jpg",
+    "colores" : ["Negro", "Azul", "Gris"]
+    }
+
+]

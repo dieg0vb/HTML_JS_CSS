@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    
+       var camiseta = {};
+       camiseta.referencia = 'r2d2';
+       camiseta.nombre = 'False friends';
+       camiseta.precio = 20;
+       camiseta.cantidad = 2;
+       camiseta.total = function() {
+           var resultado = this.precio * this.cantidad;
+           return resultado;
+       };
+    
+       var totalCamisetaActual = camiseta.total();
+       console.log('Llevas gastados %s euros.', totalCamisetaActual);
+       
+       window.winki = camiseta.total;
+       console.log('Drama: %s.', window.winki());
+       
+       
+       
+       
+   </script>
+   
+   
+    
+</body>
+</html>

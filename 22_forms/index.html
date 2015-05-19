@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans|Lobster' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lobster', cursive;
+        }
+        
+        h1 {
+            font-size : 6em;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- Es necesitario agregar un contenedor a toda la página para que
+         bootstrap la renderice correctamente debido a que no es posible modificar algunas
+         propiedades css de BODY (es un elemento especial).
+    -->
+    <div class="container">
+       <!-- Indicador de carga de contenido. -->
+        <div id="spinner">
+            <img src="spinner.svg" alt="cargando">
+        </div>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion">
+                        <span class="sr-only">Desplegar menú</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Mingo</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navegacion">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Inicio <span class="sr-only">(activa)</span></a>
+                        </li>
+                        <li><a href="#">Catálogo</a>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Buscar">
+                        </div>
+                        <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-search"></span>
+                            <span class="sr-only">Buscar</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Todas las pantallas se han creado como sections. Aquella que está visible
+             en un determinado momento es la que pertenece a la clase activa.
+        -->
+        <section id="inicio" class="pantalla ">
+            <header class="jumbotron">
+                <h1>Hello, sweeter</h1>
+                <p>
+                    I hate you.
+                    <button class="btn btn-large btn-primary">Comprar</button>
+                </p>
+            </header>
+            <main class="row">
+                <div class="col-md-4">
+                    <h2>Nosotros</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, non magnam sequi, eligendi doloremque ipsa blanditiis quo.</p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Nuestros productos</h2>
+                    <p>Fuga necessitatibus mollitia voluptate repudiandae dolorem eveniet quaerat aperiam, aspernatur.</p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Ventajas</h2>
+                    <p>Consectetur adipisicing elit. Aliquid, dolores. praesentium quibusdam nesciunt! Labore laboriosam, nesciunt deserunt doloribus nulla natus rem tempore.</p>
+                </div>
+            </main>
+
+        </section>
+
+
+        <section id="catalogo" class="pantalla">
+            <h1>
+                Catálogo
+                <button class="btn btn-lg btn-primary pull-right" role="button">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    PAGAR
+                </button>
+            </h1>
+            <!-- El contenido de este elemento se generará dinámicamente con los
+                 modelos de camiseta del carrito.
+            -->
+            <div class="row">Cargando información de productos.</div>
+        </section>
+        
+        <section id="checkout" class="pantalla activa">
+            <h1>Realizar compra</h1>
+
+            <div class="row">
+               <div id="carrito" class="col-sm-4 media-list">
+                <ul >
+                  <li id="plantillaCarrito" class="media" style="display: none;">
+                    <div class="media-left">
+                      <a href="#">
+                        <img class="media-object" 
+                             src="http://lorempixel.com/48/48/cats" alt="">
+                      </a>
+                    </div>
+                    <div class="media-body">
+                      <h4 class="media-heading">Firefly</h4>
+                      <span class="S badge">S 1</span>
+                      <span class="M badge">M 0</span>
+                      <span class="L badge">L 0</span>
+                      <span class="XL badge">XL 0</span>
+                    </div>
+                  </li>
+                </ul>                    
+                <div id="total">
+                    Total <span>36</span>€
+                </div>
+               </div>
+
+                <form class="form-horizontal col-sm-8">
+                    <fieldset>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="nombre">Nombre:</label>  
+                      <div class="col-md-4">
+                      <input id="nombre" name="nombre" placeholder="Juan Pérez" 
+                             class="form-control input-md" type="text" required>
+                      </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="email">Email:</label>  
+                      <div class="col-md-4">
+                      <input type="email" id="email" name="email" placeholder="juan@perez.com" class="form-control input-md" type="text" required>
+                      </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="localidad">Localidad:</label>  
+                      <div class="col-md-4">
+                      <input id="localidad" name="localidad" placeholder="Mora del tolón" class="form-control input-md" type="text" required>
+                      </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="codigoPostal">Código postal:</label>  
+                      <div class="col-md-4">
+                      <input id="codigoPostal" name="codigoPostal" placeholder="12345" class="form-control input-md" type="text" required>
+                      </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="direccion">Dirección:</label>  
+                      <div class="col-md-4">
+                      <input id="direccion" name="direccion" placeholder="c/ Vendederas 32 2º 1ª" class="form-control input-md" type="text" required>
+                      </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="tarjeta">Tarjeta de crédito:</label>  
+                      <div class="col-md-4">
+                          <input id="tarjeta" name="tarjeta" placeholder="5555-4444-3333-2222" class="form-control input-md" type="text" 
+                          required pattern="\d{4}-\d{4}-\d{4}-\d{4}">
+                      </div>
+                    </div>
+
+                    <!-- Prepended checkbox -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="tarjeta">Tarjeta de crédito:</label>  
+                      <div class="col-md-4">
+                        <label for="aceptarCondiciones"></label>
+                        <div class="col-md-9">
+                          <input name="aceptarCondiciones" id="aceptarCondiciones" value="true" type="checkbox" required> Acepto las condiciones
+                        </div>                  
+                      </div>
+                    </div>
+
+
+                    <!-- Button -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label sr-only" for="singlebutton">Pagar</label>
+                      <div class="col-md-4">
+                        <button id="pagar" name="pagar" class="btn btn-primary pull-right">Pagar</button>
+                      </div>
+                    </div>
+
+                    </fieldset>
+                </form>
+
+            </div>
+            
+        </section>
+        
+
+        <!-- Tanto el nav como el footer se encuentran fuera de cualquier .pantalla por
+             lo que siempre serán visibles.
+          -->
+        <footer>Mingo, hecho con <span class="glyphicon glyphicon-heart"></span> por cntg team</footer>
+
+    </div>
+
+    <!-- Las plantillas son snippets de html que clonaremos para añadir a la pantalla.
+         Existen dos: uno para la caja de errores y el otro para las cajas de productos.
+         Inicialmente deben de tener display:none para no aparecer.
+      -->
+    <div id="plantillaError" class="alert alert-warning alert-dismissible" role="alert" style="display : none;">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        <p></p>
+    </div>
+   
+    <!-- Esta plantilla utiliza microdata (schema.org) para facilitar la identificación de los 
+         campos a las herramientas de automatización (google, por ejemplo).
+      -->
+    <div id="plantillaProducto" class="col-sm-6 col-md-3" itemscope itemtype="http://schema.org/ProductModel" style="display: none;">
+        <div class="thumbnail">
+            <h4 class="text-center"><span class="label label-info" itemprop="name">Samsung</span></h4>
+            <img src="" class="img-responsive" itemprop="image">
+            <div class="caption">
+                <div class="row">
+                    <div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <h3 style="text-align: center">¡Solo
+							<span itemprop="priceCurrency" content="USD">$</span><!--
+							--><span itemprop="price" content="1000.00">1000.00</span><!--
+							-->!
+						</h3>
+                    </div>
+                </div>
+
+                <p itemprop="description" style="text-align: center">Algodón 100%</p>
+                <form class="form-comprar form-inline row">
+                  <div class="form-group col-sm-12">
+                    <label class="sr-only" for="exampleInputAmount">Small</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">S</div>
+                      <input type="text" class="form-control" name="S" placeholder="0" value="0" >
+                      <div class="input-group-addon">
+                          <a href="#" name="S" class="agregar" role="button"><span class="glyphicon glyphicon-plus"></span></a>
+                          <a href="#" name="S" class="quitar"  role="button" ><span class="glyphicon glyphicon-minus"></span></a>
+                      </div>
+                    </div>
+                  </div>  
+                  <div class="form-group col-sm-12">
+                    <label class="sr-only" for="exampleInputAmount">Medium</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">M</div>
+                      <input type="text" class="form-control" name="M" placeholder="0" value="0" >
+                      <div class="input-group-addon">
+                          <a href="#" name="M" class="agregar" role="button"><span class="glyphicon glyphicon-plus"></span></a>
+                          <a href="#" name="M" class="quitar"  role="button" ><span class="glyphicon glyphicon-minus"></span></a>
+                      </div>
+                    </div>
+                  </div>    
+                  <div class="form-group col-sm-12">
+                    <label class="sr-only" for="exampleInputAmount">Larga</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">L</div>
+                      <input type="text" class="form-control" name="L" placeholder="0" value="0" >
+                      <div class="input-group-addon">
+                          <a href="#" name="L" class="agregar" role="button"><span class="glyphicon glyphicon-plus"></span></a>
+                          <a href="#" name="L" class="quitar"  role="button" ><span class="glyphicon glyphicon-minus"></span></a>
+                      </div>
+                    </div>
+                  </div>  
+                  <div class="form-group col-sm-12">
+                    <label class="sr-only" for="exampleInputAmount">Extra larga</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">XL</div>
+                      <input type="text" class="form-control" name="XL" placeholder="0" value="0" >
+                      <div class="input-group-addon">
+                          <a href="#" name="XL" class="agregar" role="button"><span class="glyphicon glyphicon-plus"></span></a>
+                          <a href="#" name="XL" class="quitar"  role="button" ><span class="glyphicon glyphicon-minus"></span></a>
+                      </div>
+                    </div>
+                  </div>  
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="dominio.js"></script>
+    <script src="servicios.js"></script>
+    <script src="controladores.js"></script>
+    <script>
+        $(document).ready(function () {
+            controlador.inicializar();
+        });
+        
+    </script>
+
+
+
+</body>
+
+</html>

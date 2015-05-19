@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+   <script>
+    
+       var precip1 = {
+           'enero' : 100,
+           'febrero' : 25,
+           'marzo' : 40,
+           'abril' : 0
+       };   
+       console.log(precip1.enero);
+       
+       var precip2 = {
+           '0' : 100,
+           '1' : 25,
+           2 : 40,
+           '3' : 0
+       };
+       console.log(precip2['0']);
+       console.log(precip2[3]);
+    
+       var precip3 = [100, 25, 40, 0];
+       console.log(precip3[2]);
+       var total = 0;
+       for (var i=0; i < precip3.length; i++) {
+        total = total + precip3[i];
+       }
+       console.log('Total: %f.', total);
+   </script>
+   
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

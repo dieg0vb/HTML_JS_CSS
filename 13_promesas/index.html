@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" 
+          href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .pantalla {
+            display: none;
+        }
+        
+        .pantalla.activa {
+            display: block;
+        }
+        
+        
+        .cartel {
+            width : 140px;
+            border : 1px solid si lver;
+            padding: 4px;
+            margin : 4px;
+            text-align: center;
+        }
+        
+        .cartel img {
+            width : 100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <!--
+    div.container>(div.jumbotron>(h1{Hello, sweetie}+p{I hate you.}))
+    -->
+    <div class="container">
+        <section id="presentacion" class="pantalla activa jumbotron">
+            <h1>Hello, sweeter</h1>
+            <p>
+                I hate you.
+                <button class="btn btn-large btn-primary">Comprar</button>
+            </p>
+        </section>
+        
+        <section id="productos" class="pantalla">
+            <h1>Catálogo</h1>
+            <!--
+            ul>li{Producto nº $}*6
+            -->
+            <ul>
+                <li>Camiseta modelo 1 <img src="..." alt="camiseta modelo 1"></li>
+                <li>Producto nº 2</li>
+                <li>Producto nº 3</li>
+                <li>Producto nº 4</li>
+                <li>Producto nº 5</li>
+                <li>Producto nº 6</li>
+            </ul>
+                        
+        </section>
+        
+        
+    </div>
+    
+    
+    
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script>    
+        
+        var modelo = {
+            recuperarCatalogoHoy : function() {
+                console.log('Iniciando conexión a servidor.');
+                
+                var url = 'https://demo8983883.mockable.io/productos/camisetas/hoy';
+                
+                var callback = function(datos) {
+                    console.table(datos);
+                };
+                
+                var promesa = $.get(url);
+                promesa.done(callback);
+                
+                console.log('Petición realizada.');
+                return promesa;
+            }
+        };
+        
+        var controlador = {
+            
+            navegar : function() {
+                var arrayPantallaActiva = $('.activa');
+                arrayPantallaActiva.removeClass('activa');
+                
+                var arrayPantallaDestino = $('#productos');
+                arrayPantallaDestino.addClass('activa');                
+            },
+            
+            mostrarCamisetas : function(camisetas) {
+                var $lista = $('#productos ul');
+                $lista.empty();
+                for (var i=0; i < camisetas.length; i++) {
+                    var camisetaActual = camisetas[i];
+                    var $nuevoItem = $('<li>');
+                    $('<article>')
+                        .addClass('cartel')
+                        .append(
+                            $('<img>')
+                                .attr('src', camisetaActual.imagen))
+                        .append(
+                            $('<div>')
+                                .text(camisetaActual.modelo))
+                        .appendTo($nuevoItem);
+                    $lista.append($nuevoItem);    
+                }
+            },
+
+            mostrarError : function(texto) {
+                var $pantallaActiva = $('.activa');
+                var $parrafo = $('<p>').text(texto);
+                $pantallaActiva.append($parrafo);
+            },
+            
+            mostrarCatalogo : function() {
+                var self = this;
+                var callbackExito = function(datos) {
+                    self.mostrarCamisetas(datos);
+                    self.navegar();
+                };
+                var callbackError = function(jqXHR, textStatus, errorThrown) {
+                    self.mostrarError('No se ha podido recuperar la información.');
+                };
+                
+                var promesa = modelo.recuperarCatalogoHoy();
+                promesa.done(callbackExito);
+                promesa.fail(callbackError);
+            },
+            
+            inicializarPantallas : function() {
+                var self = this;
+                console.log('InicializarPantalla this:', this);
+                var gestorEventoClickBoton = function(evt) {
+                    console.log('Evento: ', evt);
+                    console.log('gestorEventoClick this: ', this);   
+                    console.log('WTF: ', self);
+                    self.mostrarCatalogo();
+                };
+
+                var arrayBotonesSeccionLanding = $('button');
+
+                arrayBotonesSeccionLanding.on('click', gestorEventoClickBoton);
+                // arrayBotonesSeccionLanding.click(gestorEventoClickBoton);
+            }
+        };
+
+        controlador.inicializarPantallas();
+        
+    </script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

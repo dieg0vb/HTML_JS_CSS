@@ -1,0 +1,25 @@
+{
+  "name": "DemoBower",
+  "version": "0.0.1",
+  "authors": [
+    "ciberado <email@javier-moreno.com>"
+  ],
+  "description": "Demostración de la herramienta bower",
+  "keywords": [
+    "demo",
+    "bower",
+    "tutorial",
+    "curso"
+  ],
+  "license": "Apache 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4"
+  }
+}
