@@ -13,7 +13,23 @@
     
     <script>
     
+        var mostrarPosicion = function(lat, lng) {
+            var elemLat = document.querySelector('#lat span');
+            elemLat.innerHTML = lat;
+            var elemLng = document.querySelector('#lng span');
+            elemLng.innerHTML = lng;
+        };
         
+        var watchId = navigator.geolocation.watchPosition(
+            function(posicion) {
+                mostrarPosicion(posicion.coords.latitude, posicion.coords.longitude);    
+            }, function(error) {
+                console.error('No ha sido posible bloquear la posición.', error);
+            }, {
+                enableHighAccuracy : true
+            }
+        );
+                                                          
     
     </script>
     
