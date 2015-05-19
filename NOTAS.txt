@@ -183,4 +183,14 @@ es necesario  casi siempre grunt debido a la complejidad de los proyectos, y la 
 https://typekit.com/  Es de adobe y de pago, pero son muy baratas y muy buenas.
 https://www.google.com/fonts de todo un poco buenas, malas y con licencias o no.
 
+##Mapas
+
+Por regla general este tipo comenta que no usemos la API de googleMpas, debido a lo pesada que es, la licencia restrictiva y no se que más dice.
+
+Recomienda el uso de cartodb.com puede ser por que es Catalán, buscar alternativas.
+
+http://leafletjs.com/ el API es facilísimo, pero esto es solo la libreria para la visualizacion, necesitas cargarle la cartografía tu mismo, tal que openstreetmap.
+
+Registrarse en Mapbox para conseguir una API Key para el ejemplo 24
+
 

@@ -20,7 +20,13 @@
     
     <script>
     
-        
+        var map = L.map('mapa').setView([42.8605668,  -8.544635999999999], 13);
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            maxZoom: 18,
+            id: 'ciberado.m7hh5a57',
+            accessToken: 'pk.eyJ1IjoiY2liZXJhZG8iLCJhIjoiUkxsN0pyWSJ9.G5ar46-sYQ6D313k7Og8eQ'
+        }).addTo(map);        
     </script>
     
 </body>
