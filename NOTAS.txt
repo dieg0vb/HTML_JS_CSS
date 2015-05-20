@@ -202,6 +202,15 @@ Phonegap fue comprada por adobe pero esto donaron el proyecto a Apache y lo llam
 
 ###Instalacion
  Vagrant es un virtualbox con un gestor que es realmente vagrant. Esto crea entornos de desarrollo rapidamente.
+(
+Vagrant is a virtual machine manager, it allows you to script the virtual machine configuration as well as the provisioning. However, it is still a virtual machine depending on Virtual Box (or others) with a huge overhead. It requires you to have a hard drive file that can be huge, it takes a lot of ram, and performance can be not very good.
+
+Docker on the other hand uses kernel cgroup and namespacing via lxc. It means that you are using the same kernel as the host and the same file system. You can use Dockerfile with the docker build command in order to handle the provisioning and configuration of your container. You have example at docs.docker.com on how to make your Dockerfile, it is very intuitive.
+
+The only reason you could want to use vagrant is if you need to do BSD, Windows or other non-linux development on your ubuntu box. Otherwise, go for Docker.
+
+)
+
  https://github.com/vasconcelloslf/phonegap-box
 
 En caso de necesitar varias versiones de node es posible que necesitemos NVM node version manager
@@ -211,8 +220,13 @@ En caso de necesitar varias versiones de node es posible que necesitemos NVM nod
 https://build.phonegap.com/ (registrarnos para poder compilar nuestra app, como no me sale de los cojones recibir correo de adobe
 voy a https://10minutemail.net/?lang=es)
 
+ejecutaremos algunos comandos desde  compilacion y añadir el build remoto de abode y aparecerá una anlace para descargar el .APK y ya lo podremos instalar
+en el telefono. Tendremos problemas de certificados pero podemos obviar esto, si no buscamos info para crear los certificados de google y listo lo podemos subir al appstore.
+ 
 
 ## Curiosidades
 
 https://getsetpay.com/sobre-nosotros/ en SAnta Marta estan
 http://popcorninyourbrowser.net/  se acaba el download
+http://ionicframework.com/ alternativa a jquery y bootstrap. La curva de aprendizaje no es muy rápida.
+Plataforma de pagos redsys.es es la mas barata y paypal la mas cara (es el puto demonio)

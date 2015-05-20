@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, 
+                                       maximum-scale=1,
+                                       minimum-scale=1, user-scalable=no">
+    </head>
+    
+    <body>
+        <div id="origen" style="background-color : #ffeeee; height: 300px"></div>
+    
+        <script src="bower_components/hammer.js/hammer.js"></script>        
+        <script>
+            var divElem = document.querySelector('#origen');
+            
+            var hammertime = new Hammer(divElem, {});
+            hammertime.on('swipeleft swiperight panright panleft', function(evt) {
+                console.log(evt.type);
+                divElem.innerHTML = evt.type;
+            });            
+        </script>
+    
+    
+    </body>
+
+</html>
