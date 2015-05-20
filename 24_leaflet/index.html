@@ -26,7 +26,12 @@
             maxZoom: 18,
             id: 'ciberado.m7hh5a57',
             accessToken: 'pk.eyJ1IjoiY2liZXJhZG8iLCJhIjoiUkxsN0pyWSJ9.G5ar46-sYQ6D313k7Og8eQ'
-        }).addTo(map);        
+        }).addTo(map);      
+        var marker = L.marker([42.8605668,  -8.544635999999999]).addTo(map);
+        var popup = L.popup()
+                    .setContent()
+                    .openOn(map);
+        marker.bindPopup().openPopup();
     </script>
     
 </body>

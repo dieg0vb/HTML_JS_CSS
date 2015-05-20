@@ -194,3 +194,25 @@ http://leafletjs.com/ el API es facilísimo, pero esto es solo la libreria para 
 Registrarse en Mapbox para conseguir una API Key para el ejemplo 24
 
 
+En openData de la xunta se puede bajar los mapas para cargar en formato WMS y REST
+http://abertos.xunta.es/portada y en busquedas podemos poner "ortofoto"
+
+##PhoneGAP
+Phonegap fue comprada por adobe pero esto donaron el proyecto a Apache y lo llamaron "Cordova".
+
+###Instalacion
+ Vagrant es un virtualbox con un gestor que es realmente vagrant. Esto crea entornos de desarrollo rapidamente.
+ https://github.com/vasconcelloslf/phonegap-box
+
+En caso de necesitar varias versiones de node es posible que necesitemos NVM node version manager
+
+
+
+https://build.phonegap.com/ (registrarnos para poder compilar nuestra app, como no me sale de los cojones recibir correo de adobe
+voy a https://10minutemail.net/?lang=es)
+
+
+## Curiosidades
+
+https://getsetpay.com/sobre-nosotros/ en SAnta Marta estan
+http://popcorninyourbrowser.net/  se acaba el download
